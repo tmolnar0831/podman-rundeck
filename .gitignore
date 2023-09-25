@@ -1,0 +1,8 @@
+# Ignore all
+*
+
+# Enable the files
+!.gitignore
+!compose.yml
+!Containerfile.openssh
+!Containerfile.rundeck

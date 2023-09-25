@@ -1,0 +1,12 @@
+FROM docker.io/library/debian:12
+LABEL maintaner = "Tamas Molnar <tmolnar0831@gmail.com> - https://tomsitcafe.com"
+USER root
+RUN apt-get update && apt-get -y install vim python3 openssh-server && \
+    useradd -m -s /bin/bash sshtest && \
+    mkdir /var/run/sshd
+COPY key.pem.pub /home/sshtest/.ssh/authorized_keys
+RUN chmod 0700 /home/sshtest/.ssh && \
+    chmod 0600 /home/sshtest/.ssh/authorized_keys && \
+    chown -R sshtest:sshtest /home/sshtest/.ssh
+EXPOSE 2222/tcp
+CMD ["/usr/sbin/sshd", "-D"]
