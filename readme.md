@@ -4,7 +4,7 @@ This is a project directory to build and test Rundeck with the Ansible plugin in
 
 ## Configuration
 
-- A `.env` file is mandatory to be able to build the project:
+- A `.env` file is **mandatory** to be able to build the project:
 
 ``` 
 RUNDECK_DATABASE_DRIVER=org.mariadb.jdbc.Driver
@@ -21,7 +21,7 @@ MYSQL_PASSWORD=pass
 
 **Don't forget to change the passwords!**
 
-- Generate the SSH key in PEM format:
+- Generate the SSH key in **PEM** format:
 
 ```
 ssh-keygen -t rsa -m pem
@@ -35,11 +35,15 @@ Start the Podman or Docker containers with their respective tools:
 podman-compose up -d --file compose.yml
 ```
 
+This will build the necessary containers and start the services.
+
+The User Interface will be available on the http://localhost:4440 URL.
+
 ## The exported volumes
 
-- `ansible-data:/etc/ansible/`
-- `rundeck-home:/home/rundeck/`
-- `dbdata:/var/lib/mysql`
+- `ansible-data:/etc/ansible/` - for the `hosts` file and the `ansible.cfg`
+- `rundeck-home:/home/rundeck/` - for local keys in the `.ssh` directory
+- `dbdata:/var/lib/mysql` - database files for data persistance
 
 ## License
 
