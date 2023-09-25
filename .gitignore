@@ -6,3 +6,4 @@
 !compose.yml
 !Containerfile.openssh
 !Containerfile.rundeck
+!readme.md
