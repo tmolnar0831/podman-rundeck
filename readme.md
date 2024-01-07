@@ -1,4 +1,4 @@
-# Rundeck - Ansible Podman project
+# Rundeck integration with Ansible in Podman containers
 
 This is a project directory to build and test Rundeck with the Ansible plugin in Podman or Docker.
 
