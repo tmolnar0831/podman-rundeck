@@ -1,10 +1,11 @@
 services:
+
   rundeck:
     build:
       context: .
       dockerfile: Containerfile.rundeck
-    links:
-      - mysql
+    networks:
+      - n_rundeck
     depends_on:
       - mysql
     env_file: .env 
@@ -13,20 +14,30 @@ services:
       - rundeck-home:/home/rundeck/
     ports:
       - "4440:4440"
+  
   mysql:
     image: mysql:5.7
-    expose:
-      - "3306"
+    networks:
+      - n_rundeck
     env_file: .env
     volumes:
       - dbdata:/var/lib/mysql
+  
   sshtest:
     build:
       context: .
       dockerfile: Containerfile.openssh
+    networks:
+      - n_rundeck
     ports:
       - "2222:22"
+
 volumes:
   dbdata:
   ansible-data:
   rundeck-home:
+
+networks:
+  n_rundeck:
+    external:
+      name: n_rundeck
