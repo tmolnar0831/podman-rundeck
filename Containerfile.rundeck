@@ -1,4 +1,4 @@
-FROM docker.io/rundeck/rundeck:4.16.0
+FROM docker.io/rundeck/rundeck:5.0.0
 LABEL maintaner = "Tamas Molnar <tmolnar0831@gmail.com> - https://tomsitcafe.com"
 USER root
 RUN apt-get update && apt-get -y install ansible python3
